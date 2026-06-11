@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         List<Persona> personas = new List<Persona>();
-
+           
         int opcion;
 
         do
@@ -17,7 +17,11 @@ class Program
             Console.WriteLine("3 - Ver Personas");
             Console.WriteLine("4 - Salir");
 
-            opcion = int.Parse(Console.ReadLine());
+           if (!int.TryParse(Console.ReadLine(), out opcion))
+        {
+         Console.WriteLine("Ingrese un número válido");
+         continue;
+        }
 
             switch (opcion)
             {
@@ -82,9 +86,17 @@ class Program
 
                 default:
 
+                
                     Console.WriteLine("No existe opcion");
                     break;
             }
+          if (opcion != 4)
+         {
+            Console.WriteLine("Presione una tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
+         }
+
 
         } while (opcion != 4);
     }
